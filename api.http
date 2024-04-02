@@ -1,1 +1,11 @@
 GET https://laughing-waffle-5gr74v7697pcvpj9-3333.app.github.dev/
+
+###
+POST  https://laughing-waffle-5gr74v7697pcvpj9-3333.app.github.dev/events
+Content-Type: application/json 
+
+{
+  "title":"Unite Summit",
+  "details":"Um evento",
+  "maximumAttendees":50
+}
