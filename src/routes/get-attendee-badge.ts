@@ -33,6 +33,10 @@ export async function getAttendeeBadge(app: FastifyInstance) {
         }
       })
 
+      if(attendee === null){
+        throw new Error('Attendee not found.')
+      }
+
       return attendee
     })
 }
