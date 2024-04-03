@@ -5,7 +5,28 @@ POST  http://localhost:3333/events
 Content-Type: application/json 
 
 {
-  "title":"Unite Summit",
-  "details":"Um evento",
-  "maximumAttendees":50
+  "title":"reuniao",
+  "details":"Reuniao almoço",
+  "maximumAttendees":2
 }
+
+#{
+#   "title":"Unite Summit",
+#   "details":"Um evento",
+#   "maximumAttendees":50
+# }
+
+###
+POST http://localhost:3333/events/8ae049f1-267f-42a1-8b62-2f97bf221cc4/attendees 
+Content-Type: application/json
+
+{
+  "name":"lucas de sousa",
+  "email":"lucas12@mail.com"
+}
+
+###
+GET http://localhost:3333/events/8ae049f1-267f-42a1-8b62-2f97bf221cc4
+
+###
+GET http://localhost:3333/attendees/4/badge

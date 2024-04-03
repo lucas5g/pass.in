@@ -1,40 +1,22 @@
-import { PrismaClient } from '@prisma/client'
 import fastify from 'fastify'
-import { z } from 'zod'
-
-const prisma = new PrismaClient({
-	log:['query']
-})
+import { serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod'
+import { createEvent } from './routes/create-event'
+import { registerForEvent } from './routes/register-for-event'
+import { getEvent } from './routes/get-event'
+import { getAttendeeBadge } from './routes/get-attendee-badge'
 
 const app = fastify()
 
-app.post('/events', async(req, res ) => {
-	const data = z.object({
-		title: z.string().min(4),
-		details: z.string().nullable(),
-		maximumAttendees: z.number().int().positive().nullable()
-	}).parse(req.body)
+app.setValidatorCompiler(validatorCompiler)
+app.setSerializerCompiler(serializerCompiler)
 
-	const event = await  prisma.event.create({ 
-		data:{
-			...data, 
-			slug: new Date().toISOString()
-		}
-	})
-	
-	res.status(201).send(event)
-})
-
-app.get('/', () => {
-	return 'Hello nlw unite'
-})
-
-app.get('/test', () => {
-	return 'hello'
-})
+app.register(createEvent)
+app.register(registerForEvent)
+app.register(getEvent)
+app.register(getAttendeeBadge)
 
 app
-	.listen({port: 3333})
+	.listen({ port: 3333 })
 	.then(() => {
 		console.log('HTTP Server running!')
 	})
