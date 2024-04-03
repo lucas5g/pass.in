@@ -1,7 +1,7 @@
-GET https://laughing-waffle-5gr74v7697pcvpj9-3333.app.github.dev/
+GET http://localhost:3333/
 
 ###
-POST  https://laughing-waffle-5gr74v7697pcvpj9-3333.app.github.dev/events
+POST  http://localhost:3333/events
 Content-Type: application/json 
 
 {
