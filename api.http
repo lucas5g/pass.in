@@ -17,12 +17,12 @@ Content-Type: application/json
 # }
 
 ###
-POST http://localhost:3333/events/8ae049f1-267f-42a1-8b62-2f97bf221cc4/attendees 
+POST http://localhost:3333/events/04987b70-a36e-4fb6-b53a-2cd4d75cb2a7/attendees 
 Content-Type: application/json
 
 {
   "name":"lucas de sousa",
-  "email":"lucas12@mail.com"
+  "email":"lucas@mail.com"
 }
 
 ###
@@ -35,4 +35,4 @@ GET http://localhost:3333/attendees/4/badge
 GET http://localhost:3333/attendees/4/check-in
 
 ###
-GET http://localhost:3333/events/04987b70-a36e-4fb6-b53a-2cd4d75cb2a7/attendees
+GET http://localhost:3333/events/04987b70-a36e-4fb6-b53a-2cd4d75cb2a7/attendees?query=lucas
