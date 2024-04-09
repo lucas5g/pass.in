@@ -12,16 +12,16 @@ export async function getEvent(app: FastifyInstance) {
           eventId: z.string().uuid()
         }),
         response: {
-          200:{
-            event:z.object({
-              id: z.string(),
-              title: z.string(),
-              slug: z.string(),
-              details: z.string(),
-              maximumAttendess: z.string(),
-              attendeesAmount: z.string()
-            })
-          }
+          // 200:{
+          //   event:z.object({
+          //     id: z.string(),
+          //     title: z.string(),
+          //     slug: z.string(),
+          //     details: z.string(),
+          //     maximumAttendess: z.string(),
+          //     attendeesAmount: z.string()
+          //   })
+          // }
         }
       }
     }, async (req, res) => {
@@ -49,12 +49,13 @@ export async function getEvent(app: FastifyInstance) {
       if (!event) {
         throw new Error('Event no found.')
       }
+ 
 
       return res.send({
         event: {
           ...event,
           _count: undefined,
-          attendeesAmount: event._count.attendees
+          attendeesAmount: event?._count.attendees
         }
       })
     })
