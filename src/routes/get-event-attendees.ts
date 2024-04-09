@@ -34,7 +34,6 @@ export async function getEventAttendees(app: FastifyInstance) {
       const { eventId } = req.params
       const { pageIndex, query } = req.query
 
-      console.log({ query, eventId })
       const attendees = await prisma.attendee.findMany({
         select: {
           id: true,
@@ -75,15 +74,5 @@ export async function getEventAttendees(app: FastifyInstance) {
         })
       })
 
-      // return res.send(attendees.map(attendee => {
-      //   return {
-      //     id: attendee.id,
-      //     checkIn: attendee.checkIn,
-      //     email: attendee.email,
-      //     name: attendee.name,
-          
-      //   }
-      // })
-      // )
     })
 }
